@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: posts
+  labels:
+    applocation: posts
+spec:
+  containers:
+    - name: posts
+      image: dummy_app:05
+      imagePullPolicy: Never
+      command: ['node']
+      args: ['index.js']
+      env:
+        - name: APP_NAME
+          value: posts
+      ports:
+        - name: web
+          containerPort: 80
+          protocol: TCP
+  restartPolicy: Never
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: notifications
+  labels:
+    applocation: notifications
+spec:
+  containers:
+    - name: notifications
+      image: dummy_app:05
+      imagePullPolicy: Never
+      command: ['node']
+      args: ['index.js']
+      env:
+        - name: APP_NAME
+          value: notifications
+      ports:
+        - name: web
+          containerPort: 80
+          protocol: TCP
+  restartPolicy: Never

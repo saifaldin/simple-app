@@ -1,0 +1,19 @@
+version: '3.9'
+services:
+  posts:
+    image: dummy_app:05
+    command: node index.js
+    environment:
+      APP_NAME: posts
+      POSTS_URL: http://localhost:3000
+      NOTIFICATIONS_URL: http://localhost:3001
+    network_mode: host
+  notifications:
+    image: dummy_app:05
+    command: node index.js
+    environment:
+      APP_NAME: notifications
+      PORT: 3001
+      POSTS_URL: http://localhost:3000
+      NOTIFICATIONS_URL: http://localhost:3001
+    network_mode: host
