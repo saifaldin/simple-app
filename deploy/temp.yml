@@ -1,0 +1,54 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: pickly
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pickly-posts
+  namespace: pickly
+  labels:
+    app: pickly-posts
+spec:
+  containers:
+    - name: pickly-posts
+      image: saifaldin3388/dummy_app:07
+      command: ['node']
+      args: ['index.js']
+      env:
+        - name: APP_NAME
+          value: 'pickly-posts'
+        - name: POSTS_URL
+          value: http://localhost:3000
+        - name: NOTIFICATIONS_URL
+          value: http://pickly-notifications.pickly
+      ports:
+        - name: web
+          containerPort: 3000
+          protocol: TCP
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pickly-notifications
+  namespace: pickly
+  labels:
+    app: pickly-notifications
+spec:
+  containers:
+    - name: pickly-notifications
+      image: saifaldin3388/dummy_app:07
+      command: ['node']
+      args: ['index.js']
+      env:
+        - name: APP_NAME
+          value: 'pickly-notifications'
+        - name: POSTS_URL
+          value: http://pickly-posts.pickly
+        - name: NOTIFICATIONS_URL
+          value: http://localhost:3000
+      ports:
+        - name: web
+          containerPort: 3000
+          protocol: TCP

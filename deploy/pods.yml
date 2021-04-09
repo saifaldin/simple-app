@@ -7,8 +7,7 @@ metadata:
 spec:
   containers:
     - name: posts
-      image: dummy_app:05
-      imagePullPolicy: Never
+      image: saifaldin3388/dummy_app:05
       command: ['node']
       args: ['index.js']
       env:
@@ -18,7 +17,6 @@ spec:
         - name: web
           containerPort: 80
           protocol: TCP
-  restartPolicy: Never
 ---
 apiVersion: v1
 kind: Pod
@@ -29,8 +27,7 @@ metadata:
 spec:
   containers:
     - name: notifications
-      image: dummy_app:05
-      imagePullPolicy: Never
+      image: saifaldin3388/dummy_app:05
       command: ['node']
       args: ['index.js']
       env:
@@ -40,4 +37,3 @@ spec:
         - name: web
           containerPort: 80
           protocol: TCP
-  restartPolicy: Never
