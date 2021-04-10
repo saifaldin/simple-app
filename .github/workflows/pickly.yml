@@ -14,6 +14,8 @@ jobs:
     needs: [prepare]
     runs-on: ubuntu-latest
     steps:
-      - run: echo $(pwd)
+      - run: echo $(ls -lh)
+      - run: cd ..
+      - run: echo $(ls -lh)
       - run: yarn
       - run: yarn test
