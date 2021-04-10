@@ -7,15 +7,21 @@ on:
 jobs:
   prepare:
     runs-on: ubuntu-latest
+    outputs:
+      sha: steps.
     steps:
       - uses: actions/checkout@v2
-
-  test:
+      - id: sha
+        run: |
+          echo ::set-output name=sha::$(git rev-parse HEAD)
+  build:
     needs: [prepare]
     runs-on: ubuntu-latest
     steps:
-      - run: echo $(ls -lh)
-      - run: cd ..
-      - run: echo $(ls -lh)
-      - run: yarn
-      - run: yarn test
+      - uses: actions/checkout@v2
+
+      - name: install dependancies
+        run: yarn
+
+      - name: run tests
+        run: yarn test
