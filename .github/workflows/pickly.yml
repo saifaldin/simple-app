@@ -28,7 +28,11 @@ jobs:
 
       - name: run tests
         run: yarn test
-
+      - name: echo
+        run: |
+          echo ${{needs.prepare.outputs.image}}
+          echo ${{needs.prepare.outputs.version}}
+          
       - name: Login to DockerHub
         uses: docker/login-action@v1
         with:
