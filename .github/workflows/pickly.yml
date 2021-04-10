@@ -1,0 +1,15 @@
+name: Pickly backend
+on:
+  pull_request:
+    branches:
+      - [main]
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: yarn test
