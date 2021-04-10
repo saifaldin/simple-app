@@ -11,7 +11,7 @@ jobs:
       sha: ${{steps.prepare.outputs.sha}}
       version: ${{steps.prepare.outputs.version}}
       dockerfile: Dockerfile
-      image: saifaldin3388/dummy_app
+      image: saifaldin3388/app
     steps:
       - uses: actions/checkout@v2
       - run: |
