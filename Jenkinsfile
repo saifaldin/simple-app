@@ -1,9 +1,9 @@
 pipeline {
     agent { docker { image 'node:14-alpine' } }
     stages {
-        stage('build') {
+        stage('test') {
           steps {
-            echo 'build'
+            yarn test
           }
         }
     }
