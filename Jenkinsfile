@@ -1,9 +1,9 @@
 pipeline {
-    agent any
+    agent { docker { image 'node:14-apline'}}
     stages {
-        stage('echo') {
+        stage('test') {
           steps {
-            sh 'echo "hello"'
+            sh 'node --version'
           }
         }
         // stage('build') {
