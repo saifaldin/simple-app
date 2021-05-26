@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-      docker {
-        image 'node:14.17-alpine'
-      }
-    }
+    agent any
     stages {
         stage('echo') {
           steps {
