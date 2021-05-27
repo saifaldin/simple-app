@@ -4,6 +4,5 @@ RUN apk add openrc docker
 RUN adduser -S saifaldin
 RUN addgroup saifaldin docker
 RUN rc-update add docker boot
-RUN service docker start
 
 USER saifaldin
