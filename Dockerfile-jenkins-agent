@@ -1,5 +1,5 @@
 FROM node:14-alpine
 
 RUN apk add openrc docker 
-RUN addgroup $USER docker
+RUN addgroup $(whoami) docker
 RUN rc-update add docker boot
