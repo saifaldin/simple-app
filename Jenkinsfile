@@ -14,6 +14,7 @@ pipeline {
     }
     stage('docker build & push image') {
       steps {
+        agent { docker { image 'docker:latest' } }
         sh "docker build -f ${DOCKERFILE} -t ${DOCKERHUB_IMAGE}:${VERSION} ."
       }
     }
