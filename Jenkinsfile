@@ -19,7 +19,6 @@ pipeline {
     }
     stage('docker build & push image') {
       steps {
-        sh 'service docker start'
         sh "docker build -f ${DOCKERFILE} -t ${DOCKERHUB_IMAGE}:${VERSION} ."
       }
     }
