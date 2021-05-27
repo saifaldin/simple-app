@@ -1,0 +1,6 @@
+FROM node:14-alpine
+
+RUN apk add openrc docker 
+RUN adduser -S saif-aldin
+RUN addgroup saif-aldin docker
+RUN rc-update add docker boot
