@@ -1,5 +1,10 @@
 pipeline {
-  agent { docker 'node:14-alpine' }
+  agent {
+    dockerfile {
+      filename 'Dockerfile-jenkins-agent'
+      dir '.'
+    }
+  }
   environment {
     VERSION = "${env.GIT_COMMIT[0..3]}"
     DOCKERHUB_IMAGE = 'saifaldin3388/app'
@@ -14,7 +19,6 @@ pipeline {
     }
     stage('docker build & push image') {
       steps {
-        agent { docker 'docker:latest'  }
         sh "docker build -f ${DOCKERFILE} -t ${DOCKERHUB_IMAGE}:${VERSION} ."
       }
     }
