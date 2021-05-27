@@ -1,8 +1,9 @@
 FROM node:14-alpine
 
-RUN apk add docker
+RUN apk add --update docker openrc
 RUN adduser -S saifaldin
 RUN addgroup saifaldin docker
+RUN rc-update add docker boot
 RUN service docker start
 
 USER saifaldin
