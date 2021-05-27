@@ -1,10 +1,5 @@
 pipeline {
-  agent {
-    dockerfile {
-      filename 'Dockerfile-jenkins-agent'
-      dir '.'
-    }
-  }
+  agent { docker { image 'node:14-alpine' } }
   environment {
     VERSION = "${env.GIT_COMMIT[0..3]}"
     DOCKERHUB_IMAGE = 'saifaldin3388/app'
