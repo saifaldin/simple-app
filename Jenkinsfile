@@ -1,5 +1,5 @@
 pipeline {
-  agent { docker 'node:14-alpine' }
+  agent any
   environment {
     VERSION = "${env.GIT_COMMIT[0..3]}"
     DOCKERHUB_IMAGE = 'saifaldin3388/app'
@@ -7,6 +7,7 @@ pipeline {
   }
   stages {
     stage('install packages & test') {
+      agent { docker 'node:14-alpine' }
       steps {
         sh 'yarn'
         sh 'yarn test'
