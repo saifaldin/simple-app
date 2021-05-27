@@ -14,9 +14,7 @@ pipeline {
     }
     stage('docker build & push image') {
       steps {
-        docker('docker') {
-          sh "docker build -f ${DOCKERFILE} -t ${DOCKERHUB_IMAGE}:${VERSION} ."
-        }
+        sh "docker build -f ${DOCKERFILE} -t ${DOCKERHUB_IMAGE}:${VERSION} ."
       }
     }
   }
