@@ -1,4 +1,5 @@
 FROM node:14-alpine
 
 RUN apk add docker
-RUN addgroup username docker
+RUN adduser -S saifaldin
+RUN addgroup saifaldin docker
