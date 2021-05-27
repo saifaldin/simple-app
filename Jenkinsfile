@@ -6,11 +6,6 @@ pipeline {
     DOCKERFILE = 'Dockerfile'
   }
   stages {
-    stage('install yarn') {
-      steps {
-        sh 'npm install -g yarn'
-      }
-    }
     stage('install packages & test') {
       steps {
         sh 'yarn'
